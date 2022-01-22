@@ -1,60 +1,74 @@
 
+import React from 'react';
 import {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button'
 import Badge from 'react-bootstrap/Badge'
 
-export function ItemCount() {
-        const [count, setCount] = useState( 0 )
-        let stockItem= 5
+function ItemCount({ initial, stock, onAdd}) {
+    const [counter, setCounter] = useState(initial)
 
-        const handlerAdd = () => {
-            //let stockItem= 5
-
-            if(count < stockItem) {
-                setCount(count+1)
-            } else {
-                alert("unidades máximas de compra")
-            }            
+    const handlerAdd = () => {
+        if(counter < stock){
+            setCounter(counter + 1)
         }
+    }
 
-        const handlerRemove = () => {
-            //let minStockItem= 1
-            if (count < 1) {
-                alert("canasto vacío")
-            }else {
-                setCount( count-1)
-            }            
-        }
+    const handlerMinus = () => {
+        if (counter > initial){
+            setCounter(counter - 1)
+        }       
+    }
 
-        return (
-            <div>              
-                <Button onClick={ handlerAdd } className="primary">Agregar al canasto</Button>
-                <Badge bg="secondary">{ count }</Badge>
-                <Button onClick={ handlerRemove }>Quitar al canasto</Button>
-            </div>
-        )
-}
+    const addCart = () => {
+        onAdd(counter)
+    }
+
+  return <div className="container w-50">
+            <Button variant="dark" onClick={ handlerAdd }> + </Button>
+            <Badge bg="danger">{ counter }</Badge>
+            <Button variant="dark" onClick={ handlerMinus }> - </Button><br/>
+            <Button variant="dark" onClick={ addCart }> Agregar al canasto </Button> 
+         </div>;
+};
+
+export default ItemCount;
+
 
 /*
-export function ItemCountNeg() {
-        const [count, setCount] = useState( 0 )
+//ejercicio que también funciona, pero sin uso de onAdd
+  function ItemCount({ initial, stock, onAdd}) {
+    const [counter, setCounter] = useState(initial)
 
-        const handlerCount = () => {
-            let minStockItem= 1
-            if (count < minStockItem) {
-                console.log("canasto vacío")
-            }else {
-                setCount( count-1)
-            }            
+    const handlerAdd = () => {
+        if(counter < stock){
+            setCounter(counter + 1)
         }
+    }
 
-        return (
-            <div>              
-                <button id="restar" onClick={ handlerCount }>Quitar del canasto</button>              
-                {count}
-            </div>
-        )
-        
+    const handlerMinus = () => {
+        if (counter > initial){
+            setCounter(counter - 1)
+        }       
+    }
+
+    const addCart = () => {
+        onAdd(counter)
+    }
+
+    return (
+        <Div className="container w-50">
+        <Button className="btn btn-primary" onClick={ handlerAdd }> + </Button>       
+        <Badge bg="secondary">{ count }</Badge>
+        <Button className="btn btn-primary" onClick={ handlerMinus }> - </Button><br/>
+        <Button className="btn btn-primary"> onClick={ addCart }Agregar al canasto </Button> 
+        <Div/>
+    )
 }
+
+
+export default ItemCount
+
 */
+
+

@@ -6,7 +6,7 @@ export const CartWidget = () => {
     return (
         <div className="w-25">
             <img src="/cesta-de-la-compra.png" alt="cesta de compras" className="w-25"/>
-            <Badge bg="secondary">9</Badge>
+            <Badge bg="danger">5</Badge>
             <span className="visually-hidden">unread messages</span>
         </div>
     )
