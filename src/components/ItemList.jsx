@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getFetch } from './helpers/mock'
-import Button from 'react-bootstrap/Button'
+//import Button from 'react-bootstrap/Button'
+import { Item } from './Item'
 //import { Item } from './Item'
 
 
@@ -19,11 +20,12 @@ const task = new Promise( (res,rej)=>{
 })
 */
 
+/*
 export function ItemList() {
  // Desarrolla la vista utilizando un array de items y un map
     const [products, setProducts] = useState ([])
     const [loading, setLoading] = useState(true) //para mostrar mensaje de "cargando...""
-
+*/
 /*
     getFetch
     .then(res => setProducts(res))
@@ -31,7 +33,7 @@ export function ItemList() {
     //.then(respuesta => console.log(respuesta))
     .finally(()=> console.log('si o si al final'))
 */
-
+/*
     useEffect(() => {
         getFetch
         .then(res => setProducts(res))
@@ -69,3 +71,46 @@ export function ItemList() {
     )
 
 }
+*/
+
+export function ItemList() {
+    // Desarrolla la vista utilizando un array de items y un map
+       const [products, setProducts] = useState ([])
+       const [loading, setLoading] = useState(true) //para mostrar mensaje de "cargando...""
+   
+   /*
+       getFetch
+       .then(res => setProducts(res))
+       .catch(err => console.log(err))
+       //.then(respuesta => console.log(respuesta))
+       .finally(()=> console.log('si o si al final'))
+   */
+   
+       useEffect(() => {
+           getFetch
+           .then(res => setProducts(res))
+           .catch(err => console.log(err))
+           //.then(respuesta => console.log(respuesta))
+           .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
+           }, [])
+   
+       //console.log(products)
+       return (
+           <div>
+               { loading ? <h2>Cargando página...</h2> :
+                                               products.map( (el) =>
+                                               
+                                               <Item
+                                               key= {el.id}
+                                               name= {el.name}
+                                               title= {el.title}
+                                               stock= {el.stock}
+                                               price= {el.price}
+                                               pictureUrl= {el.pictureUrl}
+                                               
+                                               /> 
+               ) }
+           </div>
+       )
+   
+   }
