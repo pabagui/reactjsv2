@@ -21,7 +21,7 @@ export const Item = ({ id, name, title, stock, price, pictureUrl}) => {
                                 detalle del producto
                             </Button>
                         </div>
-                    </div>
+            </div>
 
     )
 
