@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Container from 'react-bootstrap/Container'
 import Nav from 'react-bootstrap/Nav'
 import { CartWidget } from './CartWidget/CartWidget'
+import { Link } from 'react-router-dom'
 //import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
@@ -12,7 +13,14 @@ export const NavBar = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
             <Container>
-                <Navbar.Brand href="#home">K'epe Bags</Navbar.Brand>
+                <Link to='/'>
+                    K'epe Bags
+                </Link>
+                {/*
+                <Navbar.Brand href="#home">
+                    K'epe Bags
+                </Navbar.Brand>
+                */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -37,7 +45,10 @@ export const NavBar = () => {
                         */}                     
                     </Nav>                   
                 </Navbar.Collapse>
-                <CartWidget/>
+                <Link to='/cart'>
+                    <CartWidget/>
+                </Link>
+                
             </Container>
         </Navbar>
     )

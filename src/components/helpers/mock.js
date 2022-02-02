@@ -2,7 +2,7 @@ import { productos } from './productosArray'
 
 
 //función 2do intento
-export const getFetch = () => {
+export const getProducts = () => {
    
     return new Promise((res, rej) => {
         let condition=true

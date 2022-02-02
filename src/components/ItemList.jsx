@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { getFetch } from './helpers/mock'
+import { getProducts } from './helpers/mock'
 //import Button from 'react-bootstrap/Button'
 import { Item } from './Item'
 //import { Item } from './Item'
@@ -87,7 +87,7 @@ export function ItemList() {
    */
    
        useEffect(() => {
-           getFetch
+           getProducts()
            .then(res => setProducts(res))
            .catch(err => console.log(err))
            //.then(respuesta => console.log(respuesta))

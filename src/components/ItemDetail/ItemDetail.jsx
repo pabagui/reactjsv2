@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 
 
-export const ItemDetail = ( productos ) => {
+export const ItemDetail = ({productos}) => {
   const { name, title, stock, price, pictureUrl } = productos
   return (
       <>   

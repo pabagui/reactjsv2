@@ -17,8 +17,8 @@ export const ItemListContainer = ( {greetings}) => {
         <div>
             <h1>ITEMLIST</h1>
             <p>{ greetings }</p>
-            <ItemCount initial={1} stock={5} onAdd={onAdd}/> 
-            <ItemList />          
+            <ItemList />
+            <ItemCount initial={1} stock={5} onAdd={onAdd}/>                      
         </div>
     )
 }
