@@ -11,7 +11,7 @@ export const ItemDetail = ({productos}) => {
       <>   
       <div className='card w-25 mt-5'>
                         <div className='card-header'>
-                            {name} - {title}
+                        {name} - {title}
                         </div>
                         <div className='card-body'>
                         <img src={pictureUrl} alt='alforja' className='w-50'/>

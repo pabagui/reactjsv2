@@ -24,9 +24,9 @@ export const NavBar = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Link to="/category/mochilas">Mochilas</Link>
-                        <Link to="/category/totebags">Totebags</Link>
-                        <Link to="/category/accesorios">Accesorios</Link>
+                        <Link to="/category/Mochilas">Mochilas</Link>
+                        <Link to="/category/Totebags">Totebags</Link>
+                        <Link to="/category/Accesorios">Accesorios</Link>
                         {/*}
                         <Nav.Link href="#features">Mochilas</Nav.Link>
                         <Nav.Link href="#pricing">Totebags</Nav.Link>

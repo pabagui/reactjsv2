@@ -93,7 +93,7 @@ export function ItemList() {
        useEffect(() => {
            if(idCategory) {
             getProducts()
-            .then(res => setProducts(res.filter(prod => prod.categoria===idCategory)))
+            .then(res => setProducts(res.filter(prod => prod.title===idCategory)))
             .catch(err => console.log(err))
             //.then(respuesta => console.log(respuesta))
             .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
