@@ -3,6 +3,7 @@ import { getProducts } from './helpers/mock'
 //import Button from 'react-bootstrap/Button'
 import { Item } from './Item'
 //import { Item } from './Item'
+import { useParams } from 'react-router-dom'
 
 
 /*
@@ -77,6 +78,9 @@ export function ItemList() {
     // Desarrolla la vista utilizando un array de items y un map
        const [products, setProducts] = useState ([])
        const [loading, setLoading] = useState(true) //para mostrar mensaje de "cargando...""
+
+       const { idCategory } = useParams()
+
    
    /*
        getFetch
@@ -87,14 +91,26 @@ export function ItemList() {
    */
    
        useEffect(() => {
-           getProducts()
-           .then(res => setProducts(res))
-           .catch(err => console.log(err))
-           //.then(respuesta => console.log(respuesta))
-           .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
-           }, [])
+           if(idCategory) {
+            getProducts()
+            .then(res => setProducts(res.filter(prod => prod.categoria===idCategory)))
+            .catch(err => console.log(err))
+            //.then(respuesta => console.log(respuesta))
+            .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
+
+           } else {           
+                getProducts()
+                .then(res => setProducts(res))
+                .catch(err => console.log(err))
+                //.then(respuesta => console.log(respuesta))
+                .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
+            }
+           }, [idCategory])
    
        //console.log(products)
+        console.log(idCategory)
+
+
        return (
            <div>
                { loading ? <h2>Cargando página...</h2> :
@@ -106,8 +122,7 @@ export function ItemList() {
                                                title= {el.title}
                                                stock= {el.stock}
                                                price= {el.price}
-                                               pictureUrl= {el.pictureUrl}
-                                               
+                                               pictureUrl= {el.pictureUrl}                                              
                                                /> 
                ) }
            </div>

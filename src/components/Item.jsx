@@ -2,6 +2,7 @@ import React from 'react';
 //import { productos } from './helpers/productosArray'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom'
 
 
 
@@ -17,9 +18,11 @@ export const Item = ({ id, name, title, stock, price, pictureUrl}) => {
                         <h5>Stock: {stock}</h5>                      
                         </div>
                         <div className='card-footer'>
-                            <Button variant="dark">
-                                detalle del producto
-                            </Button>
+                            <Link to={`/item/${id}`}>
+                                <Button variant="dark">
+                                    detalle del producto
+                                </Button>
+                            </Link>                           
                         </div>
             </div>
 

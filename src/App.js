@@ -21,7 +21,8 @@ function App() {
             <NavBar /> {/* no se envuelve en Routes porque está fija en todas las páginas*/}
             <Routes>  {/* sirve para envolver componentes que se navegan */}
                 <Route exact path='/' element={<ItemListContainer />} /> {/* Route vincula una ruta con un componente*/}
-                <Route exact path='/detalle' element={<ItemDetailContainer greetings= "Hola, bienvenido a K'epe bags"/>} />
+                <Route exact path='/category/:idCategory' element={<ItemListContainer />} />
+                <Route exact path='/item/:idProducto' element={<ItemDetailContainer greetings= "Hola, bienvenido a K'epe bags"/>} />
                 <Route exact path='/cart' element={<Cart />} />
             </Routes>
         </div>
