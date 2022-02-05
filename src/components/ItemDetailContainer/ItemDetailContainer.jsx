@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
+//import { useParams } from 'react-router-dom';
 import { getProducts } from '../helpers/mock'
 import { ItemDetail } from '../ItemDetail/ItemDetail'
 
 
 export const ItemDetailContainer = () => {
     const [productos, setProductos] = useState({})
-    const productoId = '1'
-
+    const  idProducto  = '1'
+    console.log(idProducto)
+ 
     useEffect(() => {
         getProducts()
         .then((data) => {
-            setProductos(data.find((item) => item.id === productoId))
+            setProductos(data.find((prod) => prod.id === idProducto))
             })
             .catch((err) => console.log(err))
     }, [])
