@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 //import { productos } from '../helpers/productosArray'
-import ItemCount from '../ItemCount';
 import { Link } from 'react-router-dom';
+import ItemCount from '../ItemCount';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from 'react-bootstrap/Button'
+import { useCartContext } from '../../context/cartContext';
 
 
 
@@ -11,12 +12,17 @@ import Button from 'react-bootstrap/Button'
 export const ItemDetail = ({productos}) => {
   const { name, title, stock, price, pictureUrl } = productos
   const [contador, setContador] = useState(0)
+  const { cartList , addItem } = useCartContext()
 
 
   function onAdd(cant) {
     console.log(cant)
+    addItem({...productos, quantity: cant}) //usar en el desafío addItem({item: productos, quantity: cant})
     setContador(cant)
 }
+
+  console.log(cartList)
+
   return (
       <>   
             <div className='card w-25 mt-5'>

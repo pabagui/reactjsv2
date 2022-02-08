@@ -1,7 +1,15 @@
-import React from 'react';
+
+import { useCartContext } from '../../context/cartContext';
+import Button from 'react-bootstrap/Button'
 
 const Cart = () => {
-  return <div>soy un cart</div>;
+
+  const { cartList, clear } = useCartContext()
+
+  return <div className="container w-50">
+    { cartList.map(producto => <li>{producto.title} {producto.name}, Precio: ${producto.price}, Cantidad: {producto.quantity}</li> ) }
+    <Button variant="dark" onClick={clear}>Vaciar canasta</Button>
+  </div>;
 };
 
 export default Cart;
