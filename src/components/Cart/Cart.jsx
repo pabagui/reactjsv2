@@ -4,10 +4,11 @@ import Button from 'react-bootstrap/Button'
 
 const Cart = () => {
 
-  const { cartList, clear } = useCartContext()
+  const { cartList, removeItem, clear } = useCartContext()
 
   return <div className="container w-50">
-    { cartList.map(producto => <li>{producto.title} {producto.name}, Precio: ${producto.price}, Cantidad: {producto.quantity}</li> ) }
+    { cartList.map(producto => <li>{producto.item.title} {producto.item.name}, Precio: ${producto.item.price}, Cantidad: {producto.quantity}</li> ) }
+    {/*<Button variant="alert" onClick={() => removeItem(producto.item.id)}>x</Button>*/}
     <Button variant="dark" onClick={clear}>Vaciar canasta</Button>
   </div>;
 };

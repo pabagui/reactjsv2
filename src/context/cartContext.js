@@ -8,11 +8,23 @@ const CartContextProvider = ({children}) => {
     const [cartList, setCartList] = useState([])
 
     const addItem = (item) => {
-        setCartList([...cartList, item])
+        console.log(item)
+        //condición para no repetir productos y mostrar suma de cantidad:
+        const index = cartList.findIndex(prod => prod.item.id === item.item.id)
+        if (index === -1) {
+            setCartList( [ ...cartList, item ])
+        } else {
+            const cant = cartList[index].quantity
+            cartList[index].quantity = item.quantity + cant
+            const newCartList = cartList
+            setCartList(newCartList)
+
+        }       
+        //setCartList([...cartList, item])
     }
 
-    const removeItem = (item, quantity) => {
-        setCartList([...cartList, item, quantity])
+    const removeItem = (id) => {
+        setCartList(cartList.filter( prod => prod.item.id !== id))
     }
 
     const clear = () => {

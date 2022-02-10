@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import { getProducts } from './helpers/mock'
+
 //import Button from 'react-bootstrap/Button'
 import { Item } from './Item'
 //import { Item } from './Item'
 import { useParams } from 'react-router-dom'
+import { getProducts } from './helpers/mock'
 
 
 
@@ -17,14 +18,14 @@ export function ItemList() {
 
        useEffect(() => {
            if(idCategory) {
-            getProducts()
+            getProducts
             .then(res => setProducts(res.filter(prod => prod.title===idCategory)))
             .catch(err => console.log(err))
             //.then(respuesta => console.log(respuesta))
             .finally(()=> setLoading(false)) //para que deje de mostrar el mensaje "cargando..."
 
            } else {           
-                getProducts()
+            getProducts
                 .then(res => setProducts(res))
                 .catch(err => console.log(err))
                 //.then(respuesta => console.log(respuesta))
