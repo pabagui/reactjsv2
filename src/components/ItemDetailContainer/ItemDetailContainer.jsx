@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ItemDetail } from '../ItemDetail/ItemDetail'
-import { getProducts } from '../helpers/mock';
 //import { useParams } from 'react-router-dom';
+import { getProducts } from '../helpers/mock';
+import { ItemDetail } from '../ItemDetail/ItemDetail';
+
+
 
 //import { productos } from '../helpers/productosArray'
 
@@ -9,11 +11,12 @@ import { getProducts } from '../helpers/mock';
 export const ItemDetailContainer = () => {
     const [products, setProducts] = useState({})
     const idProducto = '1'
-    console.log(idProducto)
+    //const { idProducto } = useParams()
+    console.log(products)
  
     useEffect(() => {
         getProducts
-        .then(res => setProducts(res.find(prod => prod.id === idProducto)))
+        .then(res => setProducts(res.find(products => products.id === idProducto)))
         .catch(err => console.log(err))
     }, [])
 
