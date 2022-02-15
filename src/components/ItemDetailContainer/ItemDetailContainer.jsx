@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-//import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { getProducts } from '../helpers/mock';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 
@@ -10,8 +10,8 @@ import { ItemDetail } from '../ItemDetail/ItemDetail';
 
 export const ItemDetailContainer = () => {
     const [products, setProducts] = useState({})
-    const idProducto = '1'
-    //const { idProducto } = useParams()
+    //const idProducto = '1'
+    const { idProducto } = useParams()
     console.log(products)
  
     useEffect(() => {

@@ -44,6 +44,7 @@ export function ItemList() {
                                                
                                                <Item
                                                key= {el.id}
+                                               id= {el.id}
                                                name= {el.name}
                                                title= {el.title}
                                                stock= {el.stock}
