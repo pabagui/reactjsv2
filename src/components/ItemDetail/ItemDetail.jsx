@@ -9,30 +9,30 @@ import { useCartContext } from '../../context/cartContext';
 
 
 
-export const ItemDetail = ({products}) => {
+export const ItemDetail = ({product}) => {
   //const { name, title, stock, price, pictureUrl } = productos
   const [contador, setContador] = useState(0)
   const { cartList , addItem } = useCartContext()
 
 
   function onAdd(cant) {
-    console.log(cant)
-    addItem({item: products, quantity: cant}) //usar en el desafío addItem({item: productos, quantity: cant})
+   // console.log(cant)
+    addItem({item: product, quantity: cant}) //usar en el desafío addItem({item: productos, quantity: cant})
     setContador(cant)
 }
 
-  console.log(cartList)
+  //console.log(cartList)
 
   return (
       <>   
             <div className='card w-25 mt-5'>
                         <div className='card-header'>
-                          {products.name} - {products.title}
+                          {product.name} - {product.title}
                         </div>
                         <div className='card-body'>
-                          <img src={products.pictureUrl} alt='alforja' className='w-50'/>
-                          ${products.price}
-                          <h5>Stock: {products.stock}</h5>                      
+                          <img src={product.pictureUrl} alt='alforja' className='w-50'/>
+                          ${product.price}
+                          <h5>Stock: {product.stock}</h5>                      
                         </div>
                         <div>
                           {contador === 0 ?

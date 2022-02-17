@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from 'react'
+//import { useEffect, useState } from 'react'
 
 //import Button from 'react-bootstrap/Button'
 import { Item } from './Item'
 //import { Item } from './Item'
-import { useParams } from 'react-router-dom'
-import { getProducts } from './helpers/mock'
+//import { useParams } from 'react-router-dom'
+//import { getProducts } from './helpers/mock'
 
 
 
-export function ItemList() {
+export function ItemList( { products } ) {
     // Desarrolla la vista utilizando un array de items y un map
+
+    /*
        const [products, setProducts] = useState ([])
        const [loading, setLoading] = useState(true) //para mostrar mensaje de "cargando...""
 
@@ -34,11 +36,20 @@ export function ItemList() {
            }, [idCategory])
    
        //console.log(products)
-        console.log(idCategory)
+    //console.log(idCategory)
 
+*/
 
        return (
            <div>
+
+               {/*} { products.map( (item) => <Item key={item.id} item={item}/> */}
+
+                { products.map( (item) => <Item item={item}/>
+                                               
+               ) }
+
+               {/*}
                { loading ? <h2>Cargando página...</h2> :
                                                products.map( (el) =>
                                                
@@ -52,6 +63,7 @@ export function ItemList() {
                                                pictureUrl= {el.pictureUrl}                                              
                                                /> 
                ) }
+               */}
            </div>
        )
    

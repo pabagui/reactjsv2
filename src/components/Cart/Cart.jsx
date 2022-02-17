@@ -8,9 +8,9 @@ const Cart = () => {
 
     return <div className="container w-50"> 
       {cartList.length !== 0 ? <>
-        { cartList.map(producto => 
-        <li>{producto.item.title} {producto.item.name}, Precio: ${producto.item.price}, Cantidad: {producto.quantity}
-        <Button variant="danger" onClick={() => removeItem(producto.item.id)}>x</Button>
+        { cartList.map(product => 
+        <li>{product.item.title} {product.item.name}, Precio: ${product.item.price}, Cantidad: {product.quantity}
+        <Button variant="danger" onClick={() => removeItem(product.item.id)}>x</Button>
         </li> 
         )}
         {`El total de tu compra es $${totalCart()}`}

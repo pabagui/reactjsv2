@@ -1,6 +1,7 @@
+import { doc, getDoc, getFirestore } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProducts } from '../helpers/mock';
+//import { getProducts } from '../helpers/mock';
 import { ItemDetail } from '../ItemDetail/ItemDetail';
 
 
@@ -9,22 +10,43 @@ import { ItemDetail } from '../ItemDetail/ItemDetail';
 
 
 export const ItemDetailContainer = () => {
-    const [products, setProducts] = useState({})
+    const [product, setProduct] = useState({})
+    const [loading, setLoading] = useState(true)
     //const idProducto = '1'
     const { idProducto } = useParams()
-    console.log(products)
+    //console.log(product)
  
     useEffect(() => {
+        const db = getFirestore() //crea conexión con firestore
+        const itemRef = doc(db, 'items', idProducto) //de la conexión con firestore trae la colección item y dentro, el objeto con ese id
+        getDoc(itemRef) //promesa que trae el objeto
+        .then(resp => setProduct( { id: resp.id, ...resp.data()} )) //con función data obtengo todos los datos del objeto
+        //con el then guardo la respuesta
+        .catch((err) => console.log(err))
+        .finally(() => setLoading(false))
+      
+      
+        /*
         getProducts
         .then(res => setProducts(res.find(products => products.id === idProducto)))
         .catch(err => console.log(err))
+        */
     }, [])
 
- console.log(products)
-  return (
+            
+//usar en itemdetailcontainer
+        
 
+
+
+ console.log(product)
+  return (
     <>
-        <ItemDetail products={products} />   
+      { loading ?
+          <h2>Cargando página...</h2>
+          :
+            <ItemDetail product={product} />
+      }   
     </>
   )  
 };
